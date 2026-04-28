@@ -3,7 +3,9 @@ import java.util.Scanner;
 public class CasoDetective { 
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);  
+        
         String nombre;
+        int edad;
         int pistas = 0;
         int opcion;
         boolean casoResuelto = false;
@@ -12,8 +14,21 @@ public class CasoDetective {
         System.out.println("DESPACHO & ASOCIADOS");
         System.out.println("Caso #1: HIDDEN");
         System.out.println("================================");
+        
         System.out.print("Detective, ¿cuál es tu nombre? ");
         nombre = teclado.nextLine();
+        
+        System.out.print("¿Cuál es tu edad? ");
+        edad = teclado.nextInt();
+        
+        if(edad < 18){
+            System.out.println("¡Eres muy joven para ser detective, no lo puedes resolver");
+        return;
+        }else if(edad <= 59){
+            System.out.println("¡Bienvenido al equipo de detectives!");
+        } else {
+            System.out.println("Detective senior con experiencia");
+        } 
         
         System.out.println("");
         System.out.println("Bienvenido, detective " + nombre + ".");
@@ -28,10 +43,8 @@ public class CasoDetective {
             System.out.print("Elige una opción (1-3): ");
             
             opcion = teclado.nextInt();
-            teclado.nextLine(); 
-         
+            
             switch (opcion) {
-           
                 case 1: 
                     System.out.println("Buscando pistas...");
                     String[] evidencias = {
@@ -87,5 +100,7 @@ public class CasoDetective {
                     break;
             } 
         } while (!casoResuelto);
+        
+        teclado.close();
     }
 }
